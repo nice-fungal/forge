@@ -14,22 +14,22 @@ module.exports = [];
 // all built files will export the "forge" library but with different content
 const outputs = [
   // core forge library crypto and utils
-  {
-    entry: ['./lib/index.js'],
-    filenameBase: 'forge'
-  },
+  // {
+  //   entry: ['./lib/index.js'],
+  //   filenameBase: 'forge'
+  // },
   // core forge library + extra utils and networking support
-  {
-    entry: ['./lib/index.all.js'],
-    filenameBase: 'forge.all'
-  },
+  // {
+  //   entry: ['./lib/index.all.js'],
+  //   filenameBase: 'forge.all'
+  // },
   // prime webworker
-  {
-    entry: ['./lib/prime.worker.js', './lib/forge.js'],
-    filenameBase: 'prime.worker',
-    library: null,
-    libraryTarget: null
-  }
+  // {
+  //   entry: ['./lib/prime.worker.js', './lib/forge.js'],
+  //   filenameBase: 'prime.worker',
+  //   library: null,
+  //   libraryTarget: null
+  // }
   // Custom builds can be created by specifying the high level files you need
   // webpack will pull in dependencies as needed.
   //
@@ -41,11 +41,12 @@ const outputs = [
   // the top level forge namespace.
   //
   // Example: sha1 + ...
-  //{
-  //  entry: ['./lib/sha1.js', ..., './lib/forge.js'],
-  //  filenameBase: 'forge.custom',
-  //  libraryTarget: 'umd'
-  //}
+  {
+    entry: ['./lib/x509.js', './lib/des.js', './lib/md5.js', './lib/rsa.js', './lib/sha1.js', './lib/sha256.js', './lib/forge.js'],
+    filenameBase: 'forge',
+    library: 'forge',
+    libraryTarget: 'window'
+  }
   // Example: PBKDF2 + sha1, explicitly include sha1 default
   //{
   //  entry: ['./lib/pbkdf2.js', './lib/sha1.js', './lib/forge.js'],
@@ -81,7 +82,7 @@ outputs.forEach(info => {
     mode: 'development',
     output: {
       path: path.join(__dirname, 'dist'),
-      filename: info.filenameBase + '.js',
+      filename: info.filenameBase + '-debug.js',
       library: info.library || '[name]',
       libraryTarget: info.libraryTarget || 'umd'
     }
@@ -98,7 +99,7 @@ outputs.forEach(info => {
     mode: 'production',
     output: {
       path: path.join(__dirname, 'dist'),
-      filename: info.filenameBase + '.min.js',
+      filename: info.filenameBase + '-[hash:10].js',
       library: info.library || '[name]',
       libraryTarget: info.libraryTarget || 'umd'
     },
@@ -106,14 +107,14 @@ outputs.forEach(info => {
     plugins: [
       /*
       new webpack.optimize.UglifyJsPlugin({
-        sourceMap: true,
+        sourceMap: false,
         compress: {
           warnings: true
         },
         output: {
           comments: false
         }
-        //beautify: true
+        // beautify: true
       })
       */
     ]

@@ -1,3 +1,7 @@
+# 自定义精简
+
+1. 仅支持 `des`, `md5`, `rsa`, `sha1`, `sha256`
+
 # Forge
 
 [![npm package](https://nodei.co/npm/node-forge.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/node-forge/)
