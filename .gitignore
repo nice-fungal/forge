@@ -9,6 +9,8 @@
 .settings
 TAGS
 coverage
-dist
 node_modules
 npm-debug.log
+nodejs/coverage
+tests/forge
+.DS_Store
