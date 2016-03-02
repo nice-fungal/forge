@@ -9,6 +9,15 @@
 .settings
 TAGS
 coverage
+aclocal.m4
+autom4te.cache
+build
+config.log
+config.status
+configure
+js/forge.bundle.js
+js/forge.min.js
+head/head.min.js
 node_modules
 npm-debug.log
 nodejs/coverage

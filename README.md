@@ -1,6 +1,7 @@
 # 自定义精简
 
 1. 仅支持 `des`, `md5`, `rsa`, `sha1`, `sha256`
+2. 实际应该使用 @lattebank/ss
 
 # Forge
 
